@@ -1,0 +1,12 @@
+Roadmap
+------------------
+Periokopen dazu tun, so dass man das aktuelle Evangelium hat.
+
+Done
+------------------
+7.1.2020
+- Tagesspruch darunter anzeigen, wenn einer da.
+- Beim Aufrufen der App: aktuelle Woche anzeigen
+- Datum wählen können
+6.1.2020
+- Test, dass jeden Tag nur ein Wochenspruch tatsächlch gilt.
