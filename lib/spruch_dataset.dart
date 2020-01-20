@@ -16,9 +16,9 @@ class SpruchDaten {
     wochenSpruchZeilen.add(
         "Stephanus und Unschuldige Kinder|Psalm 116, 15. 17|Der Tod seiner Heiligen wiegt schwer vor dem HERRN. Dir will ich Dank opfern und des HERRN Namen annrufen.|");
     wochenSpruchZeilen.add(
-        "Altjahrsabend|Psalm 103, 8|Barmherzig und gnädig ist der HERR, geduldig und von großer Güte.|");
+        "Altjahrsabend|Psalm 31, 16a|Meine Zeit steht in deinen Händen.|");
     wochenSpruchZeilen.add(
-        "Neujahr|Kolosser 3, 17|Alles, was ihr tut mit Worten oder mit Werken, das tut alles im Namen des Herrn Jesus und dankt Gott, dem Vater, durch ihn.|");
+        "Neujahr|Hebräer 13, 8|Jesus Christus gestern und heute und derselbe auch in Ewigkeit|");
     wochenSpruchZeilen.add(
         "2. Sonntag nach dem Christfest|Johannes 1, 14b|Wir sahen seine Herrlichkeit, eine Herrlichkeit als des eingeborenen Sohnes vom Vater, voller Gnade und Wahrheit.|");
     wochenSpruchZeilen.add(
@@ -26,7 +26,7 @@ class SpruchDaten {
     wochenSpruchZeilen.add(
         "1. Sonntag nach Epiphanias|Römer 8, 14|Welche der Geist Gottes treibt, die sind Gottes Kinder.|");
     wochenSpruchZeilen.add(
-        "2. Sonntag nach Epiphanias|Johannes 1, 17|Das Gesetz ist durch Mose gegeben; die Gnade und Wahrheit ist durch Jesus Christus geworden.|");
+        "2. Sonntag nach Epiphanias|Johannes 1, 16|Von seiner Fülle haben wir alle genommen Gnade um Gnade|");
     wochenSpruchZeilen.add(
         "3. Sonntag nach Epiphanias|Lukas 13, 29|Es werden kommen von Osten und von Westen, von Norden und von Süden, die zu Tisch sitzen werden im Reich Gottes.|");
     wochenSpruchZeilen.add(
@@ -82,7 +82,7 @@ class SpruchDaten {
     wochenSpruchZeilen.add(
         "Pfingstfest|Sacharja 4, 6|Es soll nicht durch Heer oder Kraft, sondern durch meinen Geist geschehen, spricht der HERR Zebaoth.|");
     wochenSpruchZeilen.add(
-        "Trinitatis|Jesaja 6, 3|Heilig, heilig, heilig ist der HERR Zebaoth, alle Lande sind seiner Ehre voll.|");
+        "Trinitatis|2. Korinther 13, 13|Die Gnade unseres Herrn Jesus Christus und die Liebe Gottes und die Gemeinschaft des Heiligen Geistes sei mit euch allen|");
     wochenSpruchZeilen.add(
         "1. Sonntag nach Trinitatis|Lukas 10, 16|Christus spricht: Wer euch hört, der hört mich; und wer euch verachtet, der verachtet mich.|");
     wochenSpruchZeilen.add(
@@ -142,7 +142,7 @@ class SpruchDaten {
     wochenSpruchZeilen.add(
         "24. Sonntag nach Trinitatis|Kolosser 1, 12|Mit Freuden sagt Dank dem Vater, der euch tüchtig gemacht hat zu dem Erbteil der Heiligen im Licht.|");
     wochenSpruchZeilen.add(
-        "Drittletzter Sonntag des Kirchenjahres|2. Korinther 6, 2|Siehe, jetzt ist die Zeit der Gnade, siehe, jetzt ist der Tag des Heils!|");
+        "Drittletzter Sonntag des Kirchenjahres|Matthäus 5, 9|Selig sind, die Frieden stiften; denn sie werden Gottes Kinder heißen.|");
     wochenSpruchZeilen.add(
         "Vorletzter Sonntag des Kirchenjahres|2. Korinther 5, 10|Wir müssen alle offenbar werden vor dem Richterstuhl Christi.|");
     wochenSpruchZeilen.add(
@@ -152,5 +152,6 @@ class SpruchDaten {
     wochenSpruchZeilen.add(
         "Letzter Sonntag des Kirchenjahres|Lukas 12, 35|Laßt eure Lenden umgürtet sein und eure Lichter brennen.|");
   }
+
 }
 
