@@ -1,9 +1,6 @@
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:wochenspruch/main.dart';
-import 'package:wochenspruch/wochenspruch.dart';
+import '../lib/wochenspruch.dart';
 
 void main() {
   test('Wochenspruchgültigkeit', () {
@@ -21,7 +18,7 @@ void main() {
     expect(christFest.gilt(new TagMittag(2020, 01, 3)), true);
     expect(christFest.gilt(new TagMittag(2020, 01, 5)), false);
     ZweiterSoNachChristFest zweiterSoNachChristFest =
-    new ZweiterSoNachChristFest();
+        new ZweiterSoNachChristFest();
     expect(zweiterSoNachChristFest.gilt(new TagMittag(2020, 01, 5)), true);
     expect(zweiterSoNachChristFest.gilt(new TagMittag(2020, 01, 7)), true);
     expect(zweiterSoNachChristFest.gilt(new TagMittag(2020, 01, 13)), false);
@@ -100,4 +97,3 @@ void main() {
     }
   });
 }
-
