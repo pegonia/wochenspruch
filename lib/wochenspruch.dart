@@ -40,20 +40,48 @@ abstract class WochenSpruch {
 
   static List<WochenSpruch> getAllEinzelFestTage() {
     List<WochenSpruch> ret = new List();
-    ret.add(new FestTag("Heimsuchung", 07, 02));
     ret.add(new FestTag("Lichtmess", 02, 02));
     ret.add(new FestTag("Verkündigung", 03, 25));
-    ret.add(new FestTag("Stephanus und Unschuldige Kinder", 12, 26));
+    ret.add(new FestTag("Christvesper", 12, 24));
+    ret.add(new FestTag("Christfest", 12, 25));
+    ret.add(new FestTag("Christfest", 12, 26));
     ret.add(new FestTag("Altjahresabend", 12, 31));
-    ret.add(new FestTag("Neujahr", 01, 01));
+    ret.add(new FestTag("Tag der Beschneidung und Namensgebung Christi, Neujahr", 01, 01));
     ret.add(new FestTag("Epiphanias", 01, 06));
+    ret.add(new FestTag("Berufung des Apostels Paulus", 01, 25));
+    ret.add(new FestTag("Gedenken an die Opfer des Nationalsozialismus", 01, 27));
+    ret.add(new FestTag("Tag es Apostels Matthias", 02, 24));
+    ret.add(new FestTag("Tag es Evangelisten Markus", 04, 25));
+    ret.add(new FestTag("Tag der Apostel Philippus und Jakobus des Jüngeren", 05, 03));
     ret.add(new FestTag("Johannis", 06, 24));
-    ret.add(new FestTag(
-        "Peter und Paul sowie Apostel– und Evangelistentage", 06, 29));
+    ret.add(new FestTag("Gedenktag des Augsburger Bekenntnisses", 06, 25));
+    ret.add(new FestTag("Peter und Paul", 06, 29));
+    ret.add(new FestTag("Heimsuchung", 07, 02));
+    ret.add(new FestTag("Tag es Apostels Thomas", 07, 03));
+    ret.add(new FestTag("Tag der Maria Magdalena", 07, 22));
+    ret.add(new FestTag("Tag des Apostels Jakobus des Älteren", 07, 25));
+    ret.add(new FestTag("Tag des Apostels Bartholomäus", 08, 24));
+    ret.add(new FestTag("Tag der Enthauptung Johannes des Täufers", 08, 29));
+    ret.add(new FestTag("Tag des Apostels und Evangelisten Markus", 09, 21));
+    ret.add(new FestTag("Tag des Evangelisten Lukas", 10, 18));
     ret.add(new FestTag("Michaelis", 09, 29));
+    ret.add(new FestTag("Tag der Apostel Simon und Judas", 10, 28));
+    ret.add(new FestTag("Reformationstag", 10, 31));
+    ret.add(new FestTag("Allerheiligen", 11, 01));
+    ret.add(new FestTag("Gedenktag der Novemberpogrome", 11, 09));
+    ret.add(new FestTag("St. Martin", 11, 11));
+    ret.add(new FestTag("Tag des Apostels Andreas", 11, 30));
+    ret.add(new FestTag("Nikolaus", 12, 06));
+    ret.add(new FestTag("Stephanus", 12, 26));
+    ret.add(new FestTag("Tag des Apostels und Evangelisten Johannes", 12, 27));
+    ret.add(new FestTag("Tag der unschuldigen Kinder", 12, 28));
+    ret.add(new AscherMittwoch());
+    ret.add(new GruenDonnerstag());
     ret.add(new GruenDonnerstag());
     ret.add(new KarFreitag());
     ret.add(new Himmelfahrt());
+    ret.add(new BussUndBettag());
+    ret.add(new ErnteDank());
     return ret;
   }
 
@@ -62,7 +90,7 @@ abstract class WochenSpruch {
     for (var num = 1; num <= 4; num++) {
       ret.add(new Advent(num));
     }
-    ret.add(new ChristFest());
+    ret.add(new ErsterSoNachChristFest());
     ret.add(new ZweiterSoNachChristFest());
     for (var num = 1; num <= 5; num++) {
       ret.add(new EpiphaniasSonntag(num));
@@ -309,8 +337,26 @@ class FestTag extends WochenSpruch {
   }
 }
 
+
+
+class AscherMittwoch extends WochenSpruch {
+  AscherMittwoch() : super("Aschermittwoch");
+
+  @override
+  bool istTagesSpruch() {
+    return true;
+  }
+
+  @override
+  DateTime giltAb(DateTime date) {
+    DateTime osterSo = osterSonntag(date.year);
+    DateTime ret = osterSo.add(Duration(days: -46));
+    return ret;
+  }
+}
+
 class GruenDonnerstag extends WochenSpruch {
-  GruenDonnerstag() : super("GruenDonnerstag");
+  GruenDonnerstag() : super("Gründonnerstag");
 
   @override
   bool istTagesSpruch() {
@@ -340,6 +386,23 @@ class KarFreitag extends WochenSpruch {
     return ret;
   }
 }
+
+class BussUndBettag extends WochenSpruch {
+  BussUndBettag() : super("Buß- und Bettag");
+
+  @override
+  bool istTagesSpruch() {
+    return true;
+  }
+
+  @override
+  DateTime giltAb(DateTime date) {
+    DateTime ersterAdvent = ersterAdventSonntag(date.year);
+    DateTime ret = ersterAdvent.add(new Duration(days: -11));
+    return ret;
+  }
+}
+
 
 class Lichtmess extends WochenSpruch {
   Lichtmess() : super("Lichtmess");
@@ -416,8 +479,8 @@ class ZweiterSoNachChristFest extends WochenSpruch {
   }
 }
 
-class ChristFest extends WochenSpruch {
-  ChristFest() : super("Christfest und 1. Sonntag nach dem Christfest");
+class ErsterSoNachChristFest extends WochenSpruch {
+  ErsterSoNachChristFest() : super("1. Sonntag nach dem Christfest");
 
   @override
   bool gilt(DateTime date) {

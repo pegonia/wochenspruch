@@ -1,6 +1,6 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:Wochenspruch/wochenspruch.dart';
+import 'package:test/test.dart';
 
-import '../lib/wochenspruch.dart';
 
 void main() {
   test('Wochenspruchgültigkeit', () {
@@ -13,10 +13,9 @@ void main() {
     Advent zweiterAdvent = new Advent(2);
     expect(zweiterAdvent.gilt(new TagMittag(2020, 12, 05)), false);
     expect(zweiterAdvent.gilt(new TagMittag(2020, 12, 06)), true);
-    ChristFest christFest = new ChristFest();
-    expect(christFest.gilt(new TagMittag(2019, 12, 26)), true);
-    expect(christFest.gilt(new TagMittag(2020, 01, 3)), true);
-    expect(christFest.gilt(new TagMittag(2020, 01, 5)), false);
+    ErsterSoNachChristFest ersteNachChristFest = new ErsterSoNachChristFest();
+    expect(ersteNachChristFest.gilt(new TagMittag(2020, 01, 3)), true);
+    expect(ersteNachChristFest.gilt(new TagMittag(2020, 01, 5)), false);
     ZweiterSoNachChristFest zweiterSoNachChristFest =
         new ZweiterSoNachChristFest();
     expect(zweiterSoNachChristFest.gilt(new TagMittag(2020, 01, 5)), true);
@@ -58,6 +57,12 @@ void main() {
     expect(lastEpi.gilt(new TagMittag(2020, 02, 02)), true);
     Advent vierterAdven = new Advent(4);
     expect(vierterAdven.gilt(new TagMittag(2023, 12, 24)), true);
+    AscherMittwoch am = new AscherMittwoch();
+    expect(am.gilt(new TagMittag(2022, 3, 2)), true);
+    expect(am.gilt(new TagMittag(2024, 2, 14)), true);
+    BussUndBettag buss = new BussUndBettag();
+    expect(buss.gilt(new TagMittag(2029, 11, 21)), true);
+    expect(buss.gilt(new TagMittag(2029, 11, 22)), false);
     for (int year = 2019; year <= 2032; year++) {
       //kein Tag mit uneindeutigem Wochenspruch
       DateTime eintag = new TagMittag(year, 1, 1);
