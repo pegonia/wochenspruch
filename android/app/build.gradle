@@ -40,7 +40,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "net.kopinke.wochenspruch"
+        applicationId "net.kopinke.app2"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
