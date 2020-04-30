@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'spruchfactory.dart';
 import 'wochenspruch.dart';
 
@@ -9,6 +10,14 @@ class WochenspruchApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('de'), // German
+      ],
       title: 'Wochenspruch',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -16,12 +25,12 @@ class WochenspruchApp extends StatelessWidget {
       home: Empfang(title: 'Wochenspruch heute'),
     );
   }
-
 }
 
 class Empfang extends StatefulWidget {
   Empfang({Key key, this.title}) : super(key: key);
   String title;
+  DateTime date = DateTime.now();
 
   @override
   EmpfangState createState() => EmpfangState();
@@ -34,6 +43,13 @@ class EmpfangState extends State<Empfang> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    SystemChannels.lifecycle.setMessageHandler((msg) {
+      if (msg.contains("resumed")) {
+        setState(() {
+          zeigeDatum(DateTime.now());
+        });
+      }
+    });
     if (wochenSpruch == null) {
       wochenSpruch = spruecheKlopfer.wochenSpruch(DateTime.now());
       tagesSpruch = spruecheKlopfer.tagesSpruch(DateTime.now());
@@ -42,38 +58,83 @@ class EmpfangState extends State<Empfang> with WidgetsBindingObserver {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: new Container(
-        padding: new EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              wochenSpruch.tagName,
+      body: new Center(
+        child: GestureDetector(
+          onTap: () {
+            /*
+            DateTime newDate = widget.date.add(new Duration(days: 1));
+            setState(() {
+              zeigeDatum(newDate);
+            });
+            */
+          },
+          onDoubleTap: () {
+            /*
+            DateTime newDate = widget.date.add(new Duration(days: -1));
+            setState(() {
+              zeigeDatum(newDate);
+            });
+            
+             */
+          },
+          child: new Container(
+            padding: new EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  wochenSpruch.tagName,
+                ),
+                Text(
+                  wochenSpruch.spruchText,
+                  style: Theme.of(context).textTheme.title,
+                ),
+                Text(
+                  "(" + wochenSpruch.bibelStelle + ")",
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                ),
+                Text(
+                  tagesSpruch.tagName,
+                ),
+                Text(
+                  tagesSpruch.spruchText,
+                  style: Theme.of(context).textTheme.subtitle,
+                ),
+                Text(
+                  tagesSpruch.bibelStelle.toString().isEmpty
+                      ? ""
+                      : "(" + tagesSpruch.bibelStelle + ")",
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      FloatingActionButton(
+                        onPressed: () {
+                          DateTime newDate =
+                              widget.date.add(new Duration(days: -1));
+                          setState(() {
+                            zeigeDatum(newDate);
+                          });
+                        },
+                        child: Icon(Icons.arrow_left),
+                      ),
+                      FloatingActionButton(
+                        onPressed: () {
+                          DateTime newDate =
+                              widget.date.add(new Duration(days: 1));
+                          setState(() {
+                            zeigeDatum(newDate);
+                          });
+                        },
+                        child: Icon(Icons.arrow_right),
+                      ),
+                    ]),
+              ],
             ),
-            Text(
-              wochenSpruch.spruchText,
-              style: Theme.of(context).textTheme.title,
-            ),
-            Text(
-              "(" + wochenSpruch.bibelStelle + ")",
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-            ),
-            Text(
-              tagesSpruch.tagName,
-            ),
-            Text(
-              tagesSpruch.spruchText,
-              style: Theme.of(context).textTheme.subtitle,
-            ),
-            Text(
-              tagesSpruch.bibelStelle.toString().isEmpty
-                  ? ""
-                  : "(" + tagesSpruch.bibelStelle + ")",
-            ),
-          ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -84,16 +145,10 @@ class EmpfangState extends State<Empfang> with WidgetsBindingObserver {
     );
   }
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    setState(() {
-      zeigeDatum(DateTime.now());
-    });
-  }
   Future<void> pickDate() async {
     Future<DateTime> selectedDate = showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: widget.date,
       firstDate: DateTime(2016),
       lastDate: DateTime(2060),
     );
@@ -167,6 +222,6 @@ class EmpfangState extends State<Empfang> with WidgetsBindingObserver {
     } else {
       widget.title = formatDate(dt);
     }
+    widget.date = dt;
   }
 }
-

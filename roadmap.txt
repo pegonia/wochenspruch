@@ -4,6 +4,15 @@ Periokopen dazu tun, so dass man das aktuelle Evangelium hat.
 
 Done
 ------------------
+15.2.2020
+- Pfeilnavigation für Tag vorwärts und rückwärts
+- Typos korrigiert
+13.2.2020
+- Tap: ein Tag vor
+- Doppeltab: einen Tag zurück
+- Wechselt man zur App zurück: Heute anzeigen
+29.1.2020
+- Alle Gedenk- und Festtage sind nun drin.
 7.1.2020
 - Tagesspruch darunter anzeigen, wenn einer da.
 - Beim Aufrufen der App: aktuelle Woche anzeigen
