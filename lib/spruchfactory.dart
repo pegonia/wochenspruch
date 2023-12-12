@@ -6,7 +6,7 @@ import 'wochenspruch.dart';
 
 class WochenspruchFactory {
   HashMap<String, SpruchRep> spruchDaten = new HashMap();
-  String csvRaw;
+  late String csvRaw;
 
   WochenspruchFactory() {
     readSprueche();
@@ -23,15 +23,16 @@ class WochenspruchFactory {
       return SpruchRep.EMPTY;
     }
     dt = new TagMittag.forDateTime(dt);
-    String tagName;
+    String tagName="";
     for (WochenSpruch ws in WochenSpruch.getAllSonntage()) {
       if (ws.gilt(dt)) {
         tagName = ws.tagName;
         break;
       }
     }
-    if (tagName != null && spruchDaten.containsKey(tagName)) {
-      return spruchDaten[tagName];
+    if (spruchDaten.containsKey(tagName!)) {
+      SpruchRep? ret = spruchDaten[tagName];
+      return ret!;
     } else {
       return new SpruchRep(tagName, "--", "Keinen Spruch gefunden");
     }
@@ -42,15 +43,15 @@ class WochenspruchFactory {
       return SpruchRep.EMPTY;
     }
     dt = new TagMittag.forDateTime(dt);
-    String tagName;
+    String tagName = "";
     for (WochenSpruch ws in WochenSpruch.getAllEinzelFestTage()) {
       if (ws.gilt(dt)) {
         tagName = ws.tagName;
         break;
       }
     }
-    if (tagName != null && spruchDaten.containsKey(tagName)) {
-      return spruchDaten[tagName];
+    if (tagName.isNotEmpty  && spruchDaten.containsKey(tagName)) {
+      return spruchDaten[tagName]!;
     } else {
       return SpruchRep.EMPTY;
     }

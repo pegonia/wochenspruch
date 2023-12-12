@@ -4,6 +4,8 @@ Periokopen dazu tun, so dass man das aktuelle Evangelium hat.
 
 Done
 ------------------
+12.12.2023
+- Auf neue iOS- und Android-Version umgestellt
 15.2.2020
 - Pfeilnavigation für Tag vorwärts und rückwärts
 - Typos korrigiert

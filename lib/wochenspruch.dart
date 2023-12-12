@@ -39,7 +39,7 @@ abstract class WochenSpruch {
   }
 
   static List<WochenSpruch> getAllEinzelFestTage() {
-    List<WochenSpruch> ret = new List();
+    List<WochenSpruch> ret = [];
     ret.add(new FestTag("Lichtmess", 02, 02));
     ret.add(new FestTag("Verkündigung", 03, 25));
     ret.add(new FestTag("Christvesper", 12, 24));
@@ -86,7 +86,7 @@ abstract class WochenSpruch {
   }
 
   static List<WochenSpruch> getAllSonntage() {
-    List<WochenSpruch> ret = new List();
+    List<WochenSpruch> ret = [];
     for (var num = 1; num <= 4; num++) {
       ret.add(new Advent(num));
     }
@@ -126,7 +126,7 @@ class EwigkeitsSonntag extends WochenSpruch {
 }
 
 class LetzteWochen extends WochenSpruch {
-  int wochenBisEnde;
+  late int wochenBisEnde;
 
   LetzteWochen(int wocheBisOster) : super("") {
     this.wochenBisEnde = wocheBisOster;
@@ -167,7 +167,7 @@ class ErnteDank extends WochenSpruch {
 }
 
 class TrinitatisZeit extends WochenSpruch {
-  int nummer;
+  late int nummer;
 
   TrinitatisZeit(int nummer)
       : super(nummer.toString() + ". Sonntag nach Trinitatis") {
@@ -238,7 +238,7 @@ class Himmelfahrt extends WochenSpruch {
 }
 
 class OsterZeit extends WochenSpruch {
-  int wocheNachOstern;
+  late int wocheNachOstern;
 
   OsterZeit(int wocheBisOster) : super("") {
     this.wocheNachOstern = wocheBisOster;
@@ -279,7 +279,7 @@ class OsterFest extends WochenSpruch {
 }
 
 class VorfastenUndFastenSonntag extends WochenSpruch {
-  int wocheBisOstern;
+  late int wocheBisOstern;
 
   VorfastenUndFastenSonntag(int wocheBisOster) : super("") {
     this.wocheBisOstern = wocheBisOster;
@@ -319,7 +319,7 @@ class VorfastenUndFastenSonntag extends WochenSpruch {
 }
 
 class FestTag extends WochenSpruch {
-  int month, day;
+  late int month, day;
 
   FestTag(String tagName, int month, int day) : super(tagName) {
     this.month = month;
@@ -419,7 +419,7 @@ class Lichtmess extends WochenSpruch {
 }
 
 class EpiphaniasSonntag extends WochenSpruch {
-  int nummer;
+  late int nummer;
 
   EpiphaniasSonntag(int nummer)
       : super(nummer.toString() + ". Sonntag nach Epiphanias") {
@@ -495,7 +495,7 @@ class ErsterSoNachChristFest extends WochenSpruch {
 }
 
 class Advent extends WochenSpruch {
-  int welcherAdvent;
+  late int welcherAdvent;
 
   Advent(int advent) : super(advent.toString() + ". Advent") {
     welcherAdvent = advent;

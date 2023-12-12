@@ -1,8 +1,7 @@
 class SpruchDaten {
-  List<String> wochenSpruchZeilen;
+  List<String> wochenSpruchZeilen =[];
 
   SpruchDaten() {
-    wochenSpruchZeilen = new List();
     wochenSpruchZeilen.add(
         "1. Advent|Sacharja 9, 9|Siehe, dein König kommt zu dir, ein Gerechter und ein Helfer.|");
     wochenSpruchZeilen.add(
