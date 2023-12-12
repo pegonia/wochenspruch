@@ -1,4 +1,4 @@
-package com.example.wp2
+package net.kopinke.wochenspruch
 
 import io.flutter.embedding.android.FlutterActivity
 
